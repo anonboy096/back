@@ -1,16 +1,17 @@
-const {handleMessage}=require("../controllers/chatController");
-function socketRoutes(io){
-    io.on("connection",(socket)=>{
-        console.log("User connected",socket.id);
+import { handleMessage } from "../controllers/chatController.js";
 
-        // socket.on("send_message",(data)=>handleMessage(socket,data));
-        socket.on("userMessage", (data) => handleMessage(socket, data));
+function socketRoutes(io) {
+    io.on("connection", (socket) => {
+        console.log("User connected", socket.id);
 
-        socket.on("disconnect",()=>{
-            console.log("User disconnected",socket.id);
+        socket.on("userMessage", (data) => {
+            handleMessage(socket, data);
+        });
 
-        })
-    })
+        socket.on("disconnect", () => {
+            console.log("User disconnected", socket.id);
+        });
+    });
 }
 
-module.exports=socketRoutes;
+export default socketRoutes;
