@@ -2,5 +2,5 @@
 import dotenv from "dotenv";
 dotenv.config();
 const { default: cohere } = await import("cohere-ai");
-cohere.init(process.env.COHERE_API_KEY);
+cohere.init("pmAHUVEnKizTqGvM4lm07AkugT2FWLRDGPvVrMyx");
 export default cohere;
